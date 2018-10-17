@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   validate  :is_clickbait?
 
   def is_clickbait?
-    TITLE_OPTIONS.none? { |pat| pat.match title }
+    if TITLE_OPTIONS.none? { |pat| pat.match title }
       errors.add(:title, "must be clickbait")
     end
   end
